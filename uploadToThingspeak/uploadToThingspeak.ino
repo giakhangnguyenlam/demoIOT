@@ -5,6 +5,7 @@
 
 //Khai báo các dữ liệu cần dùng
 boolean checkData = false;
+boolean checkData2 = false;
 int VIRTUAL_PIN;
 int x = 0;
 
@@ -38,7 +39,7 @@ BLYNK_WRITE(V1)
 {
 VIRTUAL_PIN = param.asInt();
 Field_number = 2;
-checkData = true;
+checkData2 = true;
 }
 
 void setup()
@@ -55,11 +56,16 @@ void loop()
   Blynk.run();
   if (checkData == true) {
   internet();
-  //get_value();
   upload();
   //digitalWrite(LED, VIRTUAL_PIN);
   checkData == false;
 }
+
+  if (checkData2 == true) {
+  internet();
+  upload();
+  checkData2 == false;
+  }
   
 }
 
