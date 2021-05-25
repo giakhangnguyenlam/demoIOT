@@ -15,7 +15,7 @@ char pass[] = "khangnguyen66";   // your network password
 
 //----------- Channel Details -------------//
 unsigned long Channel_ID = 1397165; // Channel ID
-const int Field_number = 1; // Don't change
+int Field_number = 0; 
 const char * WriteAPIKey = "6RCBADBWQ5HD1FZW"; // Your write API Key
 char auth[] = "FZyf8uFSnHMeDMLIAK4G0ToyznseQQKd";
 // ----------------------------------------//
@@ -30,6 +30,14 @@ Blynk.syncAll();
 BLYNK_WRITE(V0)
 {
 VIRTUAL_PIN = param.asInt();
+Field_number = 1;
+checkData = true;
+}
+
+BLYNK_WRITE(V1)
+{
+VIRTUAL_PIN = param.asInt();
+Field_number = 2;
 checkData = true;
 }
 
@@ -47,7 +55,7 @@ void loop()
   Blynk.run();
   if (checkData == true) {
   internet();
-  get_value();
+  //get_value();
   upload();
   //digitalWrite(LED, VIRTUAL_PIN);
   checkData == false;
@@ -84,8 +92,8 @@ void internet()
   }
 }
 
-void get_value()
-{
-
-}
+//void get_value()
+//{
+//
+//}
 // ----------(c) Electronics-Project-Hub -----------//
